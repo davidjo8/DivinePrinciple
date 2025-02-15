@@ -8,14 +8,20 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private String password; // Will be hashed later
+    private String password;
+
+    private String role; // For role-based authentication (optional)
 }
